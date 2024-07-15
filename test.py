@@ -14,7 +14,20 @@ def main():
             function_x = input("x로 이루어진 함수를 쓰세요. (예시 : x**3 + 2*x**2 + 4*x + 3) : ")
             미분결과 = sp.diff(sp.sympify(function_x), x)
             print ("미분 결과 :" , 미분결과)
-        
+
+            while True:
+                답변 = input("한번 더 미분 하시겠습니까? 답변 Y/N (대문자) : ")
+            
+                if 답변 == "Y":
+                    미분결과 = sp.diff(sp.sympify(미분결과), x)     
+                    print("미분 결과 :", 미분결과)
+
+                elif 답변 == "N":
+                    break
+                
+                else:
+                    print("잘못된 입력입니다. 'Y' 또는 'N' 중 하나를 입력해주세요.")
+         
         elif choice == "전미분" :
             print("전미분을 선택하셨습니다.")
             function_xy = input("x와 y로 이루어진 함수를 쓰세요. (예시 : x**3 + 3*y**2 + 4*y + 2) : ")
@@ -45,6 +58,8 @@ def main():
     
     else:
         print("잘못된 입력입니다. '미분' 또는 '적분' 중 하나를 입력해주세요.")
-
+    
+    input("프로그램을 종료하려면 Enter를 누르세요...")
+    
 if __name__ == "__main__":
     main()
